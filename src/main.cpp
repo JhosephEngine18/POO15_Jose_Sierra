@@ -10,12 +10,45 @@ Description: This code tells you the position in an array of the words you typed
 using namespace std;
 
 string Words[10];
-string LookingWord, WordStored;
-int position;
+string LookingWord;
+int amount;
 
 void words(string Words[], int size)
 {
     cin >> Words[size];
+}
+
+void Position()
+{
+    cout << "Type the word you want to search its position" << endl;
+    cin >> LookingWord;
+    
+    for (int i = 0; i < 10; i++)
+    {
+        if (Words[i] == LookingWord)
+        {
+            cout << LookingWord << " is in position: " << i << endl;;
+            break;
+        }
+        else if (Words[i] != LookingWord && i == 9)
+        {
+            cout << "The word was not found" << endl;
+            Position();
+        }
+        
+    }
+}
+
+void times()
+{
+    for (int i = 0; i < 10; i++)
+    {
+        if (Words[i] == LookingWord)
+        {
+            amount++;
+        }
+        
+    }
 }
 
 int main()
@@ -26,24 +59,11 @@ int main()
     {
         words(Words, i);
     }
-    cout << "Type the word you want to search its position" << endl;
-    cin >> LookingWord;
     
-    for (int i = 0; i < 10; i++)
-    {
-        if (Words[i] == LookingWord)
-        {
-            cout << LookingWord << " is in position: " << position;
-            break;
-        }
-        else if (Words[i] != LookingWord)
-        {
-            position++;
+    Position();
+    times();
+    cout << "The word is " << amount << " times inside of the list" << endl;
 
-        }
-        
-    }
-    
     return 0;
     
 }
