@@ -11,44 +11,39 @@ using namespace std;
 
 string Words[10];
 string LookingWord;
-int amount;
 
-void words(string Words[], int size)
-{
-    cin >> Words[size];
-}
-
-void Position()
+void Position(string arr[], int size)
 {
     cout << "Type the word you want to search its position" << endl;
     cin >> LookingWord;
     
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < size; i++)
     {
-        if (Words[i] == LookingWord)
+        if (arr[i] == LookingWord)
         {
             cout << LookingWord << " is in position: " << i << endl;;
             break;
         }
-        else if (Words[i] != LookingWord && i == 9)
+        else if (arr[i] != LookingWord && i == size)
         {
             cout << "The word was not found" << endl;
-            Position();
         }
         
     }
 }
 
-void times()
+int times(string arr[], int size)
 {
-    for (int i = 0; i < 10; i++)
+    int amount = 0;
+    for (int i = 0; i < size; i++)
     {
-        if (Words[i] == LookingWord)
+        if (arr[i] == LookingWord)
         {
             amount++;
         }
         
     }
+    return amount;
 }
 
 int main()
@@ -57,12 +52,10 @@ int main()
 
     for (int i = 0; i < 10; i++)
     {
-        words(Words, i);
+        cin >> Words[i];
     }
-    
-    Position();
-    times();
-    cout << "The word is " << amount << " times inside of the list" << endl;
+    Position(Words, 10);
+    cout << "The word is " << times(Words, 10) << " times inside of the list" << endl;
 
     return 0;
     
